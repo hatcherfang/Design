@@ -4,6 +4,7 @@
 简单工厂模式的要点在于：当你需要什么，只需要传入一个正确的参数，就可以获取你所需要的对象，而无须知道其创建细节。简单工厂模式结构比较简单，其核心是工厂类的设计，其结构如图1所示：  
 <div align="center">
 <img src=https://github.com/hatcherfang/Design/blob/master/images/simpleFactoryPattern.jpg alt="图1  简单工厂模式结构图">  
+<br>
 图1  简单工厂模式结构图
 </div>  
 
