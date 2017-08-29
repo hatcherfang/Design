@@ -79,21 +79,31 @@ class divOperation(Operation):
 
 
 class factoryOperations(object):
-    # when our concrete product need to do different initialize, we can not use
-    # this way to create it and we need factory pattern to do
-    def create_factory(self, op):
-        op_dict = {
-            '+': addOperation(),
-            '-': subOperation(),
-            '*': mulOperation(),
-            '/': divOperation()
-        }
-        opObj = op_dict.get(op)
-        if not opObj:
-            print '操作符格式有误！'
-            return
-        else:
-            return opObj
+    '''abstract class'''
+    __metaclass__ = ABCMeta
+
+    @abstractmethod
+    def create_operation(self): pass
+
+
+class addOperationFactory(factoryOperations):
+    def create_operation(self):
+        return addOperation()
+
+
+class subOperationFactory(factoryOperations):
+    def create_operation(self):
+        return subOperation()
+
+
+class mulOperationFactory(factoryOperations):
+    def create_operation(self):
+        return mulOperation()
+
+
+class divOperationFactory(factoryOperations):
+    def create_operation(self):
+        return divOperation()
 
 
 class factoryOperationsWrapper(object):
@@ -139,6 +149,17 @@ class factoryOperationsWrapper(object):
             print '\n'.join(self.rightExercise) if self.rightExercise else \
                 '没有正确题目！'
 
+    def switch_factory_by_op(self, op):
+        # we can use configure file to add concrete factory to escape modify
+        # code when we add new concrete factory
+        switch_dict = {
+            '+': addOperationFactory(),
+            '-': subOperationFactory(),
+            '*': mulOperationFactory(),
+            '/': divOperationFactory()
+        }
+        return switch_dict.get(op)
+
     def exercise_correct(self):
         if not self.wrongExercise:
             print '没有错误题目！'
@@ -148,8 +169,11 @@ class factoryOperationsWrapper(object):
                 a = self.str2Num(le[0])
                 op = le[1]
                 b = self.str2Num(le[2])
-                objFactory = factoryOperations()
-                opObj = objFactory.create_factory(op)
+                objFactory = self.switch_factory_by_op(op)
+                if not objFactory:
+                    print "操作符有误！"
+                    continue
+                opObj = objFactory.create_operation()
                 self.do_operation(a, b, exercise, opObj)
 
     def is_float(self, s):
@@ -254,9 +278,9 @@ class factoryOperationsWrapper(object):
             self.arithmetic_result()
             print '继续加油哦！\n'
 
-    def create_operation(self, op):
-        objFactory = factoryOperations()
-        opObj = objFactory.create_factory(op)
+    def create_operation_wrapper(self, op):
+        objFactory = self.switch_factory_by_op(op)
+        opObj = objFactory.create_operation()
         if not opObj:
             print "factory create failed!"
             return
@@ -322,11 +346,13 @@ class factoryOperationsWrapper(object):
                 self.exercise_done(True)
             if num == 'cxjsct':
                 self.exercise_correct()
+            # we can use configure file to add concrete factory to escape modify
+            # code when we add new concrete factory
             switch_dict = {
-                '1': (self.create_operation, '+'),
-                '2': (self.create_operation, '-'),
-                '3': (self.create_operation, '*'),
-                '4': (self.create_operation, '/')
+                '1': (self.create_operation_wrapper, '+'),
+                '2': (self.create_operation_wrapper, '-'),
+                '3': (self.create_operation_wrapper, '*'),
+                '4': (self.create_operation_wrapper, '/')
             }
             func = switch_dict.get(num)
             if not func:
