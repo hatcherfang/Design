@@ -150,8 +150,11 @@ class factoryOperationsWrapper(object):
                 '没有正确题目！'
 
     def switch_factory_by_op(self, op):
-        # we can use configure file to add concrete factory to escape modify
-        # code when we add new concrete factory
+        # we can use python reflex mechanism and configure file to add concrete
+        # factory to escape modify code when we add new concrete factory,
+        # arithmetic.py also can use reflex mechanism but when concrete product
+        # need to initialize complex construct function, we use factory pattern
+        # will be better.
         switch_dict = {
             '+': addOperationFactory(),
             '-': subOperationFactory(),
@@ -346,8 +349,9 @@ class factoryOperationsWrapper(object):
                 self.exercise_done(True)
             if num == 'cxjsct':
                 self.exercise_correct()
-            # we can use configure file to add concrete factory to escape modify
-            # code when we add new concrete factory
+            # we can use python reflex mechanism and configure file to add
+            # concrete factory to escape modify code when we add
+            # new concrete factory
             switch_dict = {
                 '1': (self.create_operation_wrapper, '+'),
                 '2': (self.create_operation_wrapper, '-'),
