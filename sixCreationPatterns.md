@@ -130,8 +130,9 @@ Product product;
 product = factory.factoryMethod();  
 ……  
 ```
- 可以通过配置文件来存储具体工厂类ConcreteFactory的类名，更换新的具体工厂时无须修改源代码，系统扩展更为方便。  
-[工厂三兄弟之工厂方法模式（三）](http://blog.csdn.net/lovelion/article/details/9307137)
+可以通过配置文件来存储具体工厂类ConcreteFactory的类名，更换新的具体工厂时无须修改源代码，系统扩展更为方便。  
+
+[工厂三兄弟之工厂方法模式（三）](http://blog.csdn.net/lovelion/article/details/9307137)  
 1. 使用工厂方法模式实现的日志记录器完整解决方案。  
 2. 使用反射机制实现在不修改任何客户端代码的基础上更换或增加新的日志记录方式。  
   为了让系统具有更好的灵活性和可扩展性，Sunny公司开发人员决定对日志记录器客户端代码进行重构，使得可以在不修改任何客户端代码的基础上更换或增加新的日志记录方式。  
@@ -145,6 +146,7 @@ return obj;
 ```
 4. python同样也有反射机制，参考(https://github.com/hatcherfang/Language/tree/master/python/ReflexMechanism)  
 5. 上述重构可以使得系统更加灵活，由于很多设计模式都关注系统的可扩展性和灵活性，因此都定义了抽象层，在抽象层中声明业务方法，而将业务方法的实现放在实现层中。  
+
 [工厂三兄弟之工厂方法模式（四）](http://blog.csdn.net/lovelion/article/details/9307561)   
 1. 重载的工厂方法  
 具体工厂类DatabaseLoggerFactory代码修改如下：  
