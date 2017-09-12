@@ -11,7 +11,7 @@ class LoadBalancer(object):
         self.server_list = []
 
     def __new__(cls, *args, **kwargs):
-        # this function will run before create object and __init_ funtion run
+        # this function will run when create object and __init_ funtion run
         # after create object. If we don't rewrite the function, this class
         # init self will not the same with classmethod getLoadBalancer
         if not cls.__instance:
