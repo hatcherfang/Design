@@ -1,4 +1,6 @@
 #coding:utf-8
+# python has no absract class, we use abc to create
+from abc import ABCMeta, abstractmethod
 '''
 练习
 Sunny软件公司欲开发了一个数据加密模块，可以对字符串进行加密。最简单的加密算法通
@@ -6,6 +8,9 @@ Sunny软件公司欲开发了一个数据加密模块，可以对字符串进行
 加密。用户先使用最简单的加密算法对字符串进行加密，如果觉得还不够可以对加密之后的
 结果使用其他加密算法进行二次加密，当然也可以进行第三次加密。试使用装饰模式设计
 该多重加密系统。
+
+遵从原则：只有一个具体构件类，那么抽象装饰类可以作为该具体构件类的直接子类, 在
+定义抽象装饰类的时候直接继承具体构建类，详见如下code
 '''
 
 
@@ -17,7 +22,19 @@ class Data(object):
         pass
 
 
-class alphabeticShiftDecorator(Data):
+class dataDecorator(Data):
+    '''abstract class'''
+    __metaclass__ = ABCMeta
+    '''
+    遵从原则：只有一个具体构件类，那么抽象装饰类可以作为该具体构件类的直接子类,
+    在定义抽象装饰类的时候直接继承具体构建类
+    '''
+
+    @abstractmethod
+    def crypt(self):
+        pass
+
+class alphabeticShiftDecorator(dataDecorator):
 
     def __init__(self, data):
         self.data = data
@@ -31,7 +48,7 @@ class alphabeticShiftDecorator(Data):
         self.alpha = '\nalphabetic shift crypt:%r' % self.alpha
 
 
-class reverseOutputDecorator(Data):
+class reverseOutputDecorator(dataDecorator):
 
     def __init__(self, data):
         self.data = data
@@ -45,7 +62,7 @@ class reverseOutputDecorator(Data):
         self.alpha = '\nreverse output crypt:%r' % self.alpha
 
 
-class modeCryptDecorator(Data):
+class modeCryptDecorator(dataDecorator):
     def __init__(self, data):
         self.data = data
         self.alpha = data.alpha
