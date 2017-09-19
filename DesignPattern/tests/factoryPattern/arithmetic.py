@@ -7,7 +7,7 @@ import readline
 # python has no absract class, we use abc to create
 from abc import ABCMeta, abstractmethod
 '''
-I make the program to help children study arithmetic operations
+I write the program to help children study arithmetic operations
 
 Author: hatcher fang
 '''
