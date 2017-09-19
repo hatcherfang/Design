@@ -3,7 +3,7 @@
 简单工厂模式(Simple Factory Pattern)：定义一个工厂类，它可以根据参数的不同返回不同类的实例，被创建的实例通常都具有共同的父类。因为在简单工厂模式中用于创建实例的方法是静态(static)方法，因此简单工厂模式又被称为静态工厂方法(Static Factory Method)模式，它属于类创建型模式。  
 简单工厂模式的要点在于：当你需要什么，只需要传入一个正确的参数，就可以获取你所需要的对象，而无须知道其创建细节。简单工厂模式结构比较简单，其核心是工厂类的设计，其结构如图1所示：  
 <div align="center">
-<img src=https://github.com/hatcherfang/Design/blob/master/images/simpleFactoryPattern.jpg alt="图1  简单工厂模式结构图">  
+<img src=https://github.com/hatcherfang/Design/blob/master/DesignPattern/images/simpleFactoryPattern.jpg alt="图1  简单工厂模式结构图">  
 <br>
 图1  简单工厂模式结构图
 </div>  
@@ -103,7 +103,7 @@ class Client {
 ```
 工厂方法模式提供一个抽象工厂接口来声明抽象工厂方法，而由其子类来具体实现工厂方法，创建具体的产品对象。工厂方法模式结构如图2所示：  
 <div align="center">
-<img src=https://github.com/hatcherfang/Design/blob/master/images/factoryMethodPattern.jpg alt="图2 工厂方法模式结构图">  
+<img src=https://github.com/hatcherfang/Design/blob/master/DesignPattern/images/factoryMethodPattern.jpg alt="图2 工厂方法模式结构图">  
 <br>
 图2 工厂方法模式结构图
 </div>  
