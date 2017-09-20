@@ -1,4 +1,4 @@
-## [六个创建型模式-factory pattern](http://blog.csdn.net/lovelion/article/details/17517213)  
+## [六个创建型模式-prototype pattern](http://blog.csdn.net/lovelion/article/details/17517213)  
 ### [原型模式-Prototype Pattern【学习难度：★★★☆☆，使用频率：★★★☆☆】](http://blog.csdn.net/lovelion/article/details/7424559)  
 张纪中版《西游记》以出乎意料的造型和雷人的台词遭到广大观众朋友的热议，我们在此对该话题不作过多讨论。但无论是哪个版本的《西游记》，孙悟空都是其中的一号雄性主角，关于他（或它）拔毛变小猴的故事几乎人人皆知，孙悟空可以用猴毛根据自己的形象，复制（又称“克隆”或“拷贝”）出很多跟自己长得一模一样的“身外身”来。在设计模式中也存在一个类似的模式，可以通过一个原型对象克隆出多个一模一样的对象，该模式称之为原型模式。  
 1. 大同小异的工作周报   
